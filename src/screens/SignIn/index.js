@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import { myMoviesAPI } from '../../services/apis';
+
 import { Header } from '../../components/Header';
 import { Input } from '../../components/Input';
 import { Button } from '../../components/Button';
@@ -14,6 +16,17 @@ import {
 export function SignIn() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  async function handleSubmitLogin() {
+    const data = {
+      email,
+      password,
+    };
+
+    const response = await myMoviesAPI.post('/users/auth', data);
+
+    console.log(response.data);
+  }
 
   return (
     <Container behavior="position">
@@ -44,6 +57,7 @@ export function SignIn() {
           />
           <Button 
             title="Entrar"
+            onPress={handleSubmitLogin}
           />
         </Form>
       </Content>
