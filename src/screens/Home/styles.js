@@ -22,7 +22,7 @@ export const Logo = styled.Image`
 
 export const Section = styled.View`
   width: 100%;
-  margin-top: 24px;
+  margin: 16px 0;
 `;
 
 export const SectionTitle = styled.Text`

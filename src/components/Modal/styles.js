@@ -23,7 +23,7 @@ export const Header = styled.View`
   justify-content: space-between;
 `;
 
-export const MovieInfo = styled.View`
+export const MovieInfo = styled.ScrollView`
   flex: 1;
   padding: 8px;
   background: #F0F0F0;

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigation } from '@react-navigation/native';
 
 import { myMoviesAPI } from '../../services/apis';
 
@@ -11,9 +12,13 @@ import {
   Content, 
   Title,
   Form,
+  BackToSignInButton,
+  BackToSignInText,
 } from './styles';
 
 export function SignUp() {
+  const navigation = useNavigation();
+
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -72,6 +77,9 @@ export function SignUp() {
             onPress={handleSubmitSignUp}
           />
         </Form>
+        <BackToSignInButton onPress={() => navigation.goBack()}>
+          <BackToSignInText>Voltar para Login</BackToSignInText>
+        </BackToSignInButton>
       </Content>
     </Container>
   );

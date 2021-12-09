@@ -23,3 +23,11 @@ export const Form = styled.View`
   width: 100%;
   margin: 64px 0 48px 0;
 `;
+
+export const BackToSignInButton = styled.TouchableOpacity``;
+
+export const BackToSignInText = styled.Text`
+  font-size: 16px;
+  color: #7A7A80;
+  align-self: center;
+`;

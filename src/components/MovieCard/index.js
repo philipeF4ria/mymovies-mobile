@@ -20,7 +20,11 @@ export function MovieCard({ data }) {
       />
       <Title>{data.title}</Title>
 
-      <Modal isVisible={modalVisible} closeModal={handleToggleModal} data={data} />
+      <Modal 
+        isVisible={modalVisible} 
+        closeModal={handleToggleModal} 
+        data={data}
+      />
     </Container>
   );
 }

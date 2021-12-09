@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Icon from 'react-native-vector-icons/Feather';
+
+import { myMoviesAPI } from '../../services/apis';
 
 import { 
   Container, 
@@ -16,6 +18,18 @@ import {
 } from './styles';
 
 export function Modal({ isVisible, closeModal, data }) {
+  
+  async function handleAddToCatalog() {
+    const movieData = {
+      id: String(data.id),
+      title: data.title,
+      description: data.overview,
+      image_url: `https://image.tmdb.org/t/p/original/${data.poster_path}`,
+    }
+
+    await myMoviesAPI.post('/movies', movieData);
+  }
+
   return (
     <Container visible={isVisible} animationType="slide" transparent={true}>
       <Content>
@@ -33,8 +47,8 @@ export function Modal({ isVisible, closeModal, data }) {
           </Header>
           <Description>{data.overview}</Description>
         </MovieInfo>
-        <AddToCatalogButton>
-          <AddToCatalogButtonTitle activeOpacity={0.7}>
+        <AddToCatalogButton activeOpacity={0.7} onPress={handleAddToCatalog}>
+          <AddToCatalogButtonTitle>
             Adicionar ao Catálogo
           </AddToCatalogButtonTitle>
         </AddToCatalogButton>

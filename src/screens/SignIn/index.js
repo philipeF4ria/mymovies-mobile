@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { useNavigation } from '@react-navigation/native';
 
+import { AuthContext } from '../../contexts/auth';
 import { myMoviesAPI } from '../../services/apis';
 
 import { Header } from '../../components/Header';
@@ -11,11 +13,17 @@ import {
   Content, 
   Title,
   Form,
+  CreateAccountButton,
+  CreateAccountText,
 } from './styles';
 
 export function SignIn() {
+  const { signIn } = useContext(AuthContext);
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  const navigation = useNavigation();
 
   async function handleSubmitLogin() {
     const data = {
@@ -23,9 +31,7 @@ export function SignIn() {
       password,
     };
 
-    const response = await myMoviesAPI.post('/users/auth', data);
-
-    console.log(response.data);
+    const response = await signIn(data);
   }
 
   return (
@@ -60,6 +66,9 @@ export function SignIn() {
             onPress={handleSubmitLogin}
           />
         </Form>
+        <CreateAccountButton onPress={() => navigation.navigate('SignUp')}>
+          <CreateAccountText>Criar uma conta</CreateAccountText>
+        </CreateAccountButton>
       </Content>
     </Container>
   );

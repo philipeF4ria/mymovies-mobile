@@ -1,12 +1,18 @@
 import React from 'react';
+import { StatusBar } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
 
-import { Home } from './screens/Home';
-import { Catalog } from './screens/Catalog';
-import { SignIn } from './screens/SignIn';
-import { SignUp } from './screens/SignUp';
+import AuthProvider from './contexts/auth';
+
+import { Routes } from './routes';
 
 export default function App() {
   return (
-    <SignIn />
+    <NavigationContainer>
+      <StatusBar backgroundColor="#1B1B1F"/>
+      <AuthProvider>
+        <Routes /> 
+      </AuthProvider>
+    </NavigationContainer>
   );
 }
