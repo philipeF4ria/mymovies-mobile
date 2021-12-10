@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Icon from 'react-native-vector-icons/Feather';
 
 import { myMoviesAPI } from '../../services/apis';
@@ -17,7 +17,7 @@ import {
   AddToCatalogButtonTitle,
 } from './styles';
 
-export function Modal({ isVisible, closeModal, data }) {
+export function Modal({ isVisible, closeModal, data, action }) {
   
   async function handleAddToCatalog() {
     const movieData = {
@@ -28,6 +28,12 @@ export function Modal({ isVisible, closeModal, data }) {
     }
 
     await myMoviesAPI.post('/movies', movieData);
+  }
+
+  console.log(`ACTION -> ${action}`);
+
+  async function handleRemoveFromCatalog() {
+    await myMoviesAPI.delete(`/movies/${data.id}`);
   }
 
   return (
@@ -47,11 +53,22 @@ export function Modal({ isVisible, closeModal, data }) {
           </Header>
           <Description>{data.overview}</Description>
         </MovieInfo>
-        <AddToCatalogButton activeOpacity={0.7} onPress={handleAddToCatalog}>
-          <AddToCatalogButtonTitle>
-            Adicionar ao Catálogo
-          </AddToCatalogButtonTitle>
-        </AddToCatalogButton>
+        {
+        action === 'add' ? (
+          <AddToCatalogButton activeOpacity={0.7} onPress={handleAddToCatalog}>
+            <AddToCatalogButtonTitle>
+              Adicionar ao Catálogo
+            </AddToCatalogButtonTitle>
+          </AddToCatalogButton>
+        ) : (
+          <AddToCatalogButton activeOpacity={0.7} onPress={handleRemoveFromCatalog}>
+            <AddToCatalogButtonTitle>
+              Remover do Catálogo
+            </AddToCatalogButtonTitle>
+          </AddToCatalogButton>
+        )
+        }
+      
       </Content>
     </Container>
   );

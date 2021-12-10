@@ -4,7 +4,7 @@ import { Modal } from '../Modal';
 
 import { Banner, Container, Title } from './styles';
 
-export function MovieCard({ data }) {
+export function MovieCard({ data, action }) {
   const [modalVisible, setModalVisible] = useState(false);
 
   function handleToggleModal() {
@@ -22,8 +22,9 @@ export function MovieCard({ data }) {
 
       <Modal 
         isVisible={modalVisible} 
-        closeModal={handleToggleModal} 
+        closeModal={handleToggleModal}
         data={data}
+        action={action}
       />
     </Container>
   );

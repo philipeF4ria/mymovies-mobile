@@ -30,13 +30,14 @@ export function Catalog() {
         data={catalog}
         numColumns={2}
         horizontal={false}
-        renderItem={({ item }) => <MovieCard 
+        renderItem={({ item }) => <MovieCard
           data={{
             id: item.id,
             title: item.title,
             overview: item.description,
             poster_path: item.image_url
           }}
+          action="remove"
         />}
       />
     </Container>
