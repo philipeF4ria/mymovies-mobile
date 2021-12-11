@@ -11,6 +11,17 @@ export const Content = styled.View`
   margin-top: 76px;
 `;
 
+export const SignUpHeader = styled.View`
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const Logo = styled.Image`
+  width: 170px;
+  height: 40px;
+`;
+
 export const Title = styled.Text`
   font-size: 16px;
   color: #7A7A80;

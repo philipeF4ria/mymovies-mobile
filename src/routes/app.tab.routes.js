@@ -22,8 +22,8 @@ export function AppTabRoutes() {
       }}
     >
       <Tab.Screen 
-        name="Explorer" 
-        component={AppStackRoutes} 
+        name="App"
+        component={AppStackRoutes}
         options={{
           tabBarIcon: ({ color, size }) => {
             return <IonIcons name="ios-compass" color={color} size={size} />

@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { FlatList } from 'react-native';
-import { useNavigation, useRoute } from '@react-navigation/native';
+import { useRoute } from '@react-navigation/native';
 
+import { Header } from '../../components/Header';
 import { LoadingView } from '../../components/LoadingView';
 import { MovieCard } from '../../components/MovieCard';
 
-import { Container, Title } from './styles';
+import { Container, Title, } from './styles';
 
 import { key, theMovieDBAPI } from '../../services/apis';
 
@@ -16,7 +17,7 @@ export function SearchResults() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    async function loadMovies() {    
+    async function loadMovies() {
       const results = await theMovieDBAPI.get('search/movie', {
         params: {
           query: route?.params?.title,
@@ -27,15 +28,15 @@ export function SearchResults() {
       });
 
       setMovies(results.data.results);
-
-      console.log(results.data);
+      setLoading(false);
     }
 
     loadMovies();
   }, []);
 
-  return (
+  return loading === true ? <LoadingView /> : (
     <Container>
+      <Header />
       <Title>Resultados</Title>
       <FlatList 
         data={movies}

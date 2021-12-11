@@ -1,16 +1,18 @@
 import React, { useState, useContext } from 'react';
 import { useNavigation } from '@react-navigation/native';
 
-import { AuthContext } from '../../contexts/auth';
-import { myMoviesAPI } from '../../services/apis';
+import logo from '../../assets/logo.png';
 
-import { Header } from '../../components/Header';
+import { AuthContext } from '../../contexts/auth';
+
 import { Input } from '../../components/Input';
 import { Button } from '../../components/Button';
 
 import { 
   Container, 
-  Content, 
+  Content,
+  SignInHeader,
+  Logo, 
   Title,
   Form,
   CreateAccountButton,
@@ -31,12 +33,14 @@ export function SignIn() {
       password,
     };
 
-    const response = await signIn(data);
+    await signIn(data);
   }
 
   return (
     <Container behavior="position">
-      <Header />
+      <SignInHeader>
+        <Logo source={logo} />
+      </SignInHeader>
       <Content>
         <Title>Faça seu login para começar a usar o aplicativo</Title>
         <Form>

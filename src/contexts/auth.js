@@ -52,8 +52,17 @@ export default function AuthProvider({ children }) {
     setLoading(false);
   }
 
+  async function signOut() {
+    await AsyncStorage.multiRemove([
+      '@MyMovies:token',
+      '@MyMovies:user',
+    ]);
+
+    setData({});
+  }
+
   return (
-    <AuthContext.Provider value={{ user: data.user, loading, signIn }}>
+    <AuthContext.Provider value={{ user: data.user, loading, signIn, signOut }}>
       {children}
     </AuthContext.Provider>
   );

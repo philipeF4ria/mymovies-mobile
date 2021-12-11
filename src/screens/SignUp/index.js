@@ -1,15 +1,18 @@
 import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 
+import logo from '../../assets/logo.png';
+
 import { myMoviesAPI } from '../../services/apis';
 
-import { Header } from '../../components/Header';
 import { Input } from '../../components/Input';
 import { Button } from '../../components/Button';
 
 import { 
   Container, 
-  Content, 
+  Content,
+  SignUpHeader,
+  Logo, 
   Title,
   Form,
   BackToSignInButton,
@@ -30,14 +33,16 @@ export function SignUp() {
       password,
     };
 
-    const response = await myMoviesAPI.post('/users', data);
+    await myMoviesAPI.post('/users', data);
 
-    console.log(response.data);
+    navigation.goBack();
   }
 
   return (
     <Container behavior="position">
-      <Header />
+      <SignUpHeader>
+        <Logo source={logo} />
+      </SignUpHeader>
       <Content>
         <Title>Faça seu cadastro. É fácil e rápido!</Title>
         <Form>
