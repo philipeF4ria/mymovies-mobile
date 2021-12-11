@@ -2,21 +2,13 @@ import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import IonIcons from 'react-native-vector-icons/Ionicons';
 
-import { Home } from '../screens/Home';
+import { AppStackRoutes } from './app.stack.routes';
+
 import { Catalog } from '../screens/Catalog';
 
 const Tab = createBottomTabNavigator();
 
-const icons = {
-  Home: {
-    name: 'ios-compass',
-  },
-  Catalog: {
-    name: 'ios-bookmark',
-  },
-}
-
-export function AppRoutes() {
+export function AppTabRoutes() {
   return (
     <Tab.Navigator
       screenOptions={{
@@ -30,8 +22,8 @@ export function AppRoutes() {
       }}
     >
       <Tab.Screen 
-        name="Home" 
-        component={Home} 
+        name="Explorer" 
+        component={AppStackRoutes} 
         options={{
           tabBarIcon: ({ color, size }) => {
             return <IonIcons name="ios-compass" color={color} size={size} />

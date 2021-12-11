@@ -1,12 +1,11 @@
 import React, { useContext } from 'react';
-import { View, ActivityIndicator } from 'react-native';
 
 import { AuthContext } from '../contexts/auth';
 
 import { LoadingView } from '../components/LoadingView';
 
 import { AuthRoutes } from './auth.routes';
-import { AppRoutes } from './app.routes';
+import { AppTabRoutes } from './app.tab.routes';
 
 export function Routes() {
   const { user, loading } = useContext(AuthContext);
@@ -15,5 +14,5 @@ export function Routes() {
     return <LoadingView />
   }
 
-  return user ? <AppRoutes /> : <AuthRoutes />;
+  return user ? <AppTabRoutes /> : <AuthRoutes />;
 }

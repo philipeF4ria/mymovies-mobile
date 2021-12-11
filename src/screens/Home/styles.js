@@ -10,14 +10,27 @@ export const Content = styled.ScrollView`
   flex: 1;
 `;
 
-export const Header = styled.View`
+export const SearchContainer = styled.View`
+  flex-direction: row;
   width: 100%;
-  align-items: center;
+  height: 54px;
+  margin: 16px 0;
 `;
 
-export const Logo = styled.Image`
-  width: 170px;
-  height: 40px;
+export const Input = styled.TextInput`
+  background-color: #34313D;
+  border: none;
+  width: 85%;
+  height: 54px;
+  padding: 8px;
+  color: #AEAEB3;
+`;
+
+export const SearchButton = styled.TouchableOpacity`
+  background-color: #DC1637;
+  width: 15%;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const Section = styled.View`

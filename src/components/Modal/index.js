@@ -30,8 +30,6 @@ export function Modal({ isVisible, closeModal, data, action }) {
     await myMoviesAPI.post('/movies', movieData);
   }
 
-  console.log(`ACTION -> ${action}`);
-
   async function handleRemoveFromCatalog() {
     await myMoviesAPI.delete(`/movies/${data.id}`);
   }

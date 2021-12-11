@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { FlatList } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import IonIcons from 'react-native-vector-icons/Ionicons';
 
 import { theMovieDBAPI, key } from '../../services/apis';
 import { selectMovies } from '../../utils/selectMovies';
@@ -10,14 +12,20 @@ import { MovieCard } from '../../components/MovieCard';
 import { 
   Container,
   Content,
+  SearchContainer,
+  Input,
+  SearchButton,
   Section,
   SectionTitle,
 } from './styles';
 
 export function Home() {
+  const navigation = useNavigation();
+
   const [nowPlayingMovies, setNowPlayingMovies] = useState([{}]);
   const [popularMovies, setPopularMovies] = useState([{}]);
   const [topRatedMovies, setTopRatedMovies] = useState([{}]);
+  const [inputValue, setInputValue] = useState('');
 
   useEffect(() => {
     async function getMovies() {
@@ -57,10 +65,31 @@ export function Home() {
     getMovies();
   }, []);
 
+  function handleSearchMovies() {
+    if (inputValue === '') return;
+
+    navigation.navigate('SearchResults', { title: inputValue });
+
+    setInputValue('');
+  }
+
   return (
     <Container>
       <Content showsVerticalScrollIndicator={false}>
       <Header />
+
+      <SearchContainer>
+        <Input 
+          placeholder="Qual filme você procura?"
+          placeholderTextColor="#AEAEB3"
+          value={inputValue}
+          onChangeText={text => setInputValue(text)}
+        />
+        <SearchButton onPress={handleSearchMovies}>
+          <IonIcons name="search" size={28} color="#F0F0F0" />
+        </SearchButton>
+      </SearchContainer>
+
       <Section>
         <SectionTitle>Em Cartaz</SectionTitle>
         <FlatList 
