@@ -1,4 +1,5 @@
 import React from 'react';
+import { Alert } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 
 import { myMoviesAPI } from '../../services/apis';
@@ -27,7 +28,13 @@ export function Modal({ isVisible, closeModal, data, action }) {
       image_url: `https://image.tmdb.org/t/p/original/${data.poster_path}`,
     }
 
-    await myMoviesAPI.post('/movies', movieData);
+    try {
+      await myMoviesAPI.post('/movies', movieData);
+
+      closeModal();
+    } catch(err) {
+      Alert.alert('Erro', err.message);
+    }
   }
 
   async function handleRemoveFromCatalog() {

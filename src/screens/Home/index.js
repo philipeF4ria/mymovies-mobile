@@ -96,7 +96,7 @@ export function Home() {
           data={nowPlayingMovies}
           horizontal={true}
           showsHorizontalScrollIndicator={false}
-          renderItem={({ item }) => <MovieCard data={item} action="add"/>}
+          renderItem={({ item }) => <MovieCard data={item} />}
           keyExtractor={(item) => String(item.id)}
         />
       </Section>
@@ -107,7 +107,7 @@ export function Home() {
           data={popularMovies}
           horizontal={true}
           showsHorizontalScrollIndicator={false}
-          renderItem={({ item }) => <MovieCard data={item} action="add"/>}
+          renderItem={({ item }) => <MovieCard data={item} />}
           keyExtractor={item => String(item.id)}
         />
       </Section>
@@ -118,7 +118,7 @@ export function Home() {
           data={topRatedMovies}
           horizontal={true}
           showsHorizontalScrollIndicator={false}
-          renderItem={({ item }) => <MovieCard data={item} action="add"/>}
+          renderItem={({ item }) => <MovieCard data={item} />}
           keyExtractor={item => String(item.id)}
         />
       </Section>

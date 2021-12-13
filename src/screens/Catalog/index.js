@@ -37,7 +37,6 @@ export function Catalog() {
             overview: item.description,
             poster_path: item.image_url
           }}
-          action="remove"
         />}
       />
     </Container>

@@ -78,7 +78,7 @@ export function SignUp() {
             onChangeText={value => setPassword(value)}
           />
           <Button 
-            title="Entrar"
+            title="Cadastrar"
             onPress={handleSubmitSignUp}
           />
         </Form>
