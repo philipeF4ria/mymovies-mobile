@@ -77,3 +77,6 @@
   $ yarn ios
   
 ```
+<p>Desenvolvido com 💙 por Philipe Faria<p>
+
+[Meu Linkedin](https://www.linkedin.com/in/philipe-faria/)
